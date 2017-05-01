@@ -3,39 +3,43 @@
     ViewBag.Title = "Регистрация";
 }
 
-<h2>@ViewBag.Title.</h2>
-
+<h4>@ViewBag.Title.</h4>
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Создайте новую учетную запись.</h4>
-    <hr />
+    <h5>Создайте новую учетную запись.</h5>
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s3">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        <div class="row">
+            <div class="input-field col s3">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        <div class="row">
+            <div class="input-field col s3">
+               @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+               @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Регистрация" />
-        </div>
-    </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+            Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/materialize.js")
+    @Scripts.Render("~/Scripts/materialize.min.js")
+ 
 }
